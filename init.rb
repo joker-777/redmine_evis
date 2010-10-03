@@ -1,10 +1,12 @@
 require 'redmine'
 
+require 'redmine_evis'
+
 Redmine::Plugin.register :redmine_evis do
   name 'Redmine Evis plugin'
-  author 'Author name'
-  description 'This is a plugin for Redmine'
+  author 'Johannes Köhler'
+  description 'Adding Fuctionallity of adding and reading of Evis for redmine.'
   version '0.0.1'
-  url 'http://example.com/path/to/plugin'
+  url 'http://www.eviscape.com'
   author_url 'http://example.com/about'
 end

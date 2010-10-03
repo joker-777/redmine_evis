@@ -1,0 +1,20 @@
+# gem install redgreen
+# gem install test_notifier
+
+require "test_notifier/runner/autotest"
+
+Autotest.add_hook :initialize do |autotest|
+  %w{.git .svn .hg .DS_Store ._* tmp log doc}.each do |exception|
+    autotest.add_exception(exception)
+  end
+end
+
+#module KDENotify
+#  def self.knotify title, msg
+#    system "dcop knotify default notify " +
+#      "eventname \'#{title}\' \'#{msg}\' '' '' 16 2"
+#  end
+#  Autotest.add_hook :red do |at|
+#    knotify "Tests failed", "#{at.files_to_test.size} tests failed"
+#  end
+#end
