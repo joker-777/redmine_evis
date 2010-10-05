@@ -5,22 +5,19 @@ module Evis
   NOD_ID = 306
 
   def self.included(base)
-    base.send :extend, ClassMethods
+    base.class_eval do
+      extend ClassMethods
+      class << self
+        alias_method_chain :find, :evis
+      end
+    end
   end
 
   module ClassMethods
-    def acts_as_evis
-      class << self
-        define_method :find do |*args|
-          if args.include? :default
-            super *args
-          else
-            api_query = Evis.generate_api_query args
-            response = Net::HTTP.get SERVER, api_query
-            Evis.convert_to_news_objects response
-          end
-        end
-      end
+    def find_with_evis(*args)
+      api_query = Evis.generate_api_query args
+      response = Net::HTTP.get SERVER, api_query
+      Evis.convert_to_news_objects response
     end
   end
 
@@ -54,4 +51,4 @@ module Evis
 
 end
 
-ActiveRecord::Base.send :include, Evis
+News.send :include, Evis
