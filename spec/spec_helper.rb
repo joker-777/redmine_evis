@@ -5,6 +5,8 @@ rescue LoadError
   exit
 end
 
+require 'webmock/rspec'
+
 plugin_spec_dir = File.dirname(__FILE__)
 ActiveRecord::Base.logger = Logger.new(plugin_spec_dir + "/debug.log")
 
@@ -16,4 +18,7 @@ Spec::Runner.configure do |config|
   config.use_transactional_fixtures = true
   config.use_instantiated_fixtures  = false
   config.fixture_path = './spec/fixtures/'
+
+  # webmock
+  config.include WebMock
 end

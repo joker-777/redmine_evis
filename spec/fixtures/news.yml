@@ -3,7 +3,7 @@
 no_tour_date:
   id: 11306
   title: "No Tour Dates Yet"
-  description: "<p>Watch this space..</p>"
+  description: "\n        <p>Watch this space..</p>\n        "
   author_id: 0
   created_on: "2010-07-02 20:14:21"
   comments_count: 2
